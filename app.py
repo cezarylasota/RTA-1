@@ -4,14 +4,13 @@ app = Flask(__name__)
 
 @app.route('/api/v1.0/predict', methods=['GET'])
 def predict():
-    # Pobranie liczb z parametrów zapytania, jeśli brak to domyślnie 0
     num1 = float(request.args.get('num1', 0))
     num2 = float(request.args.get('num2', 0))
     
-    # Reguła predykcji
+    # Reguła decyzyjna
     prediction = 1 if (num1 + num2) > 5.8 else 0
     
-    # Stworzenie odpowiedzi
+    # Informacja zwrotna
     response = {
         'prediction': prediction,
         'features': {
